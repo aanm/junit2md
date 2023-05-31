@@ -1,0 +1,11 @@
+name: 'junit2md'
+description: 'Creates a markdown file from junit files'
+inputs:
+  junit-directory:
+    description: 'Directory with the junit files'
+    required: true
+runs:
+  using: "docker"
+  image: "action/Dockerfile"
+  args:
+    - ${{ inputs.junit-directory }}

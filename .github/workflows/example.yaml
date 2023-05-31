@@ -1,0 +1,39 @@
+name: Github Action Example
+
+on:
+  pull_request: {}
+
+  push:
+    branches:
+      - main
+
+jobs:
+  test-junit-2-md:
+    runs-on: ubuntu-latest
+    name: Print JUnits as GitHub Summary
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        with:
+          ref: ${{ steps.vars.outputs.sha }}
+          persist-credentials: false
+
+      - name: Publish Test Results As GitHub Summary
+        uses: ./
+        with:
+          junit-directory: "example/successful"
+
+  test-junit-2-md-failing-tests:
+    runs-on: ubuntu-latest
+    name: Print JUnits Failures as GitHub Summary
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        with:
+          ref: ${{ steps.vars.outputs.sha }}
+          persist-credentials: false
+
+      - name: Publish Test Results As GitHub Summary
+        uses: ./
+        with:
+          junit-directory: "example/failure"

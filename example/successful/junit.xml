@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <testsuite name="Suite-runtime" tests="33" failures="0" errors="0" time="538">
+      <testcase name="K8sDatapathConfig MonitorAggregation Checks that monitor aggregation restricts notifications" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathConfig MonitorAggregation Checks that monitor aggregation flags send notifications" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathConfig Encapsulation Check iptables masquerading with random-fully" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathConfig IPv6 masquerading across K8s nodes, skipped due to native routing CIDR" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathConfig Check BPF masquerading with ip-masq-agent" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathConfig Transparent encryption DirectRouting Check connectivity with transparent encryption and direct routing with bpf_host" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathConfig IPv4Only Check connectivity with IPv6 disabled" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathConfig Etcd Check connectivity" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathConfig Host firewall Check connectivity with IPv6 disabled" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathConfig Host firewall With VXLAN" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathConfig Host firewall With VXLAN and endpoint routes" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathConfig Host firewall With native routing" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathConfig Host firewall With native routing and endpoint routes" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathConfig High-scale IPcache" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathConfig Iptables Skip conntrack for pod traffic" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathBandwidthTest" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sUpdates Tests upgrade and downgrade from a Cilium stable image to master" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="RuntimeDatapathConntrackInVethModeTest Conntrack-related configuration options for endpoints" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathBGPTests" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathCustomCalls" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sKafkaPolicyTest Kafka Policy Tests KafkaPolicies" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="RuntimeAgentPolicies Tests Endpoint Connectivity Functions After Daemon Configuration Is Updated" classname="Suite-runtime" time="49.92474824"></testcase>
+      <testcase name="RuntimeAgentPolicies Tests EntityNone as a deny-all" classname="Suite-runtime" time="29.826194705"></testcase>
+      <testcase name="RuntimeAgentPolicies TestsEgressToHost Tests Egress To Host" classname="Suite-runtime" time="29.178432973"></testcase>
+      <testcase name="RuntimeAgentPolicies TestsEgressToHost Tests egress with CIDR+L4 policy" classname="Suite-runtime" time="44.152012294"></testcase>
+      <testcase name="RuntimeAgentPolicies TestsEgressToHost Tests egress with CIDR+L4 policy to external https service" classname="Suite-runtime" time="46.650987763"></testcase>
+      <testcase name="RuntimeAgentPolicies TestsEgressToHost Tests egress with CIDR+L7 policy" classname="Suite-runtime" time="44.326967445"></testcase>
+      <testcase name="RuntimeAgentPolicies Init Policy Default Drop Test tests ingress" classname="Suite-runtime" time="21.706260926"></testcase>
+      <testcase name="RuntimeAgentPolicies Init Policy Default Drop Test tests egress" classname="Suite-runtime" time="6.337833939"></testcase>
+      <testcase name="RuntimeAgentPolicies Init Policy Default Drop Test With PolicyAuditMode tests ingress" classname="Suite-runtime" time="16.108275224"></testcase>
+      <testcase name="RuntimeAgentPolicies Init Policy Default Drop Test With PolicyAuditMode tests egress" classname="Suite-runtime" time="6.133986503"></testcase>
+      <testcase name="RuntimeAgentPolicies Init Policy Test Init Ingress Policy Test" classname="Suite-runtime" time="9.781724998"></testcase>
+      <testcase name="RuntimeAgentPolicies Init Policy Test Init Egress Policy Test" classname="Suite-runtime" time="6.701332668"></testcase>
+      <testcase name="K8sDatapathServicesTest Checks E/W loadbalancing (ClusterIP, NodePort from inside cluster, etc) Checks in-cluster KPR" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathServicesTest Checks E/W loadbalancing (ClusterIP, NodePort from inside cluster, etc) Checks service accessing itself (hairpin flow)" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathServicesTest Checks E/W loadbalancing (ClusterIP, NodePort from inside cluster, etc) Tests NodePort inside cluster (kube-proxy) with IPSec and externalTrafficPolicy=Local" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathServicesTest Checks E/W loadbalancing (ClusterIP, NodePort from inside cluster, etc) Tests NodePort inside cluster (kube-proxy) with the host firewall and externalTrafficPolicy=Local" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathServicesTest Checks E/W loadbalancing (ClusterIP, NodePort from inside cluster, etc) Tests NodePort inside cluster (kube-proxy) with externalTrafficPolicy=Local" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathServicesTest Checks E/W loadbalancing (ClusterIP, NodePort from inside cluster, etc) Tests NodePort inside cluster (kube-proxy) " classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathServicesTest Checks E/W loadbalancing (ClusterIP, NodePort from inside cluster, etc) TFTP with DNS Proxy port collision Tests TFTP from DNS Proxy Port" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathServicesTest Checks E/W loadbalancing (ClusterIP, NodePort from inside cluster, etc) with L4 policy Tests NodePort with L4 Policy" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathServicesTest Checks E/W loadbalancing (ClusterIP, NodePort from inside cluster, etc) with L7 policy Tests NodePort with L7 Policy" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathServicesTest Checks N/S loadbalancing" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathServicesTest Checks device reconfiguration" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sDatapathEgressGatewayTest" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest Basic Test Invalid Policy report status correctly" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest Basic Test Traffic redirections to proxy Tests HTTP proxy visibility without policy" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest Basic Test Traffic redirections to proxy Tests DNS proxy visibility without policy" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest Basic Test Traffic redirections to proxy Tests proxy visibility interactions with policy lifecycle operations" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest Multi-node policy test validates ingress CIDR-dependent L4" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest Multi-node policy test validates fromEntities policies with remote-node identity disabled Allows from all hosts with cnp fromEntities host policy" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest Multi-node policy test validates fromEntities policies with remote-node identity enabled Validates fromEntities remote-node policy" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest Multi-node policy test validates fromEntities policies Validates fromEntities cluster policy" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest Multi-node policy test validates fromEntities policies Validates fromEntities all policy" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest Multi-node policy test with L7 policy using connectivity-check to check datapath" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest Namespaces policies Tests the same Policy in different namespaces" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest Namespaces policies Kubernetes Network Policy by namespace selector" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest Namespaces policies Cilium Network policy using namespace label and L7" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest Clusterwide policies Test clusterwide connectivity with policies" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest External services To Services first endpoint creation" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest External services To Services first policy" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest External services To Services first endpoint creation match service by labels" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPolicyTest External services To Services first policy, match service by labels" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="RuntimeAgentChaos Endpoint Endpoint recovery on restart" classname="Suite-runtime" time="9.720735456"></testcase>
+      <testcase name="RuntimeAgentChaos Cilium agent removing leftover Cilium interfaces" classname="Suite-runtime" time="7.108717944"></testcase>
+      <testcase name="RuntimeAgentChaos Cilium agent Checking for file-descriptor leak" classname="Suite-runtime" time="0.214132587"></testcase>
+      <testcase name="RuntimeAgentChaos Connectivity over restarts Checking that during restart no traffic is dropped using Egress + Ingress Traffic" classname="Suite-runtime" time="15.077865485"></testcase>
+      <testcase name="RuntimeAgentChaos KVStore Validate that delete events on KVStore do not release in use identities" classname="Suite-runtime" time="0.50993531"></testcase>
+      <testcase name="RuntimeAgentChaos KVStore Delete event on KVStore with CIDR identities" classname="Suite-runtime" time="2.026019766"></testcase>
+      <testcase name="K8sAgentChaosTest Connectivity demo application Endpoint can still connect while Cilium is not running" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentChaosTest Restart with long lived connections TCP connection is not dropped when cilium restarts" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentChaosTest Restart with long lived connections L3/L4 policies still work while Cilium is restarted" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="RuntimeAgentFQDNPolicies Enforces ToFQDNs policy" classname="Suite-runtime" time="21.205638684"></testcase>
+      <testcase name="RuntimeAgentFQDNPolicies Validate dns-proxy monitor information" classname="Suite-runtime" time="6.654221291"></testcase>
+      <testcase name="RuntimeAgentFQDNPolicies Interaction with other ToCIDR rules" classname="Suite-runtime" time="6.715501152"></testcase>
+      <testcase name="RuntimeAgentFQDNPolicies Roundrobin DNS" classname="Suite-runtime" time="3.47092877"></testcase>
+      <testcase name="RuntimeAgentFQDNPolicies Can update L7 DNS policy rules" classname="Suite-runtime" time="7.968488525"></testcase>
+      <testcase name="RuntimeAgentFQDNPolicies CNAME follow" classname="Suite-runtime" time="7.071917784"></testcase>
+      <testcase name="RuntimeAgentFQDNPolicies Enforces L3 policy even when no IPs are inserted" classname="Suite-runtime" time="16.734267199"></testcase>
+      <testcase name="RuntimeAgentFQDNPolicies Implements matchPattern: *" classname="Suite-runtime" time="16.812502038"></testcase>
+      <testcase name="RuntimeAgentFQDNPolicies With verbose policy logs Validates DNSSEC responses" classname="Suite-runtime" time="21.471486167"></testcase>
+      <testcase name="RuntimeAgentFQDNPolicies toFQDNs populates toCIDRSet (data from proxy) Policy addition after DNS lookup" classname="Suite-runtime" time="15.741152879"></testcase>
+      <testcase name="RuntimeAgentFQDNPolicies toFQDNs populates toCIDRSet (data from proxy) L3-dependent L7/HTTP with toFQDN updates proxy policy" classname="Suite-runtime" time="15.8741198"></testcase>
+      <testcase name="RuntimeAgentFQDNPolicies DNS proxy policy works if Cilium stops" classname="Suite-runtime" time="28.811474747"></testcase>
+      <testcase name="RuntimeSSHTests Should fail when context times out" classname="Suite-runtime" time="3.045304449"></testcase>
+      <testcase name="K8sAgentHubbleTest Hubble Observe Test L3/L4 Flow" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentHubbleTest Hubble Observe Test TLS certificate" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentHubbleTest Hubble Observe Test L3/L4 Flow with hubble-relay" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentHubbleTest Hubble Observe Test L7 Flow" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentHubbleTest Hubble Observe Test L7 Flow with hubble-relay" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentHubbleTest Hubble Observe Test FQDN Policy with Relay" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="RuntimeDatapathMonitorTest With Sample Containers Cilium monitor event types" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="RuntimeDatapathMonitorTest With Sample Containers cilium monitor check --from" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="RuntimeDatapathMonitorTest With Sample Containers cilium monitor check --to" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="RuntimeDatapathMonitorTest With Sample Containers cilium monitor check --related-to" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="RuntimeDatapathMonitorTest With Sample Containers delivers the same information to multiple monitors" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="RuntimeDatapathMonitorTest With Sample Containers checks container ids match monitor output" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="RuntimeDatapathPrivilegedUnitTests Run Tests" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="RuntimeAgentKVStoreTest KVStore tests Consul KVStore" classname="Suite-runtime" time="9.849705059"></testcase>
+      <testcase name="RuntimeAgentKVStoreTest KVStore tests Etcd KVStore" classname="Suite-runtime" time="11.602467365999999"></testcase>
+      <testcase name="K8sDatapathLRPTests Checks local redirect policy" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sPolicyTestExtended" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentPerNodeConfigTest Correctly computes config overrides" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentFQDNTest Restart Cilium validate that FQDN is still working" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentFQDNTest Validate that multiple specs are working correctly" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="K8sAgentFQDNTest Validate that FQDN policy continues to work after being updated" classname="Suite-runtime" time="0">
+          <skipped></skipped>
+      </testcase>
+  </testsuite>
