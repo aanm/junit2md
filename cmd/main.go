@@ -152,7 +152,7 @@ func writeMarkdown(fout io.Writer, testCaseResults []TestCaseResult, verbose *bo
 			return err
 		}
 
-		row = fmt.Sprintf("<details><summary>Click here for error message</summary>\n\n%s\n</details>", result.Msg)
+		row = fmt.Sprintf("<details><summary>Click here for error message</summary>\n\n```\n%s\n```\n</details>\n", result.Msg)
 		err = printOut(row)
 		if err != nil {
 			return err
