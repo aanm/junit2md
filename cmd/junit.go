@@ -7,17 +7,18 @@ import (
 )
 
 type Testsuite struct {
-	XMLName   xml.Name   `xml:"testsuite"`
-	Name      string     `xml:"name,attr"`
-	Tests     int        `xml:"tests,attr"`
-	Failures  int        `xml:"failures,attr"`
-	Errors    int        `xml:"errors,attr"`
-	ID        int        `xml:"id,attr"`
-	Hostname  string     `xml:"hostname,attr"`
-	Time      float64    `xml:"time,attr"`
-	Timestamp string     `xml:"timestamp,attr"`
-	Testcases []Testcase `xml:"testcase"`
-	Filename  string     `xml:"-"`
+	XMLName    xml.Name   `xml:"testsuite"`
+	Name       string     `xml:"name,attr"`
+	Tests      int        `xml:"tests,attr"`
+	Failures   int        `xml:"failures,attr"`
+	Errors     int        `xml:"errors,attr"`
+	ID         int        `xml:"id,attr"`
+	Hostname   string     `xml:"hostname,attr"`
+	Time       float64    `xml:"time,attr"`
+	Timestamp  string     `xml:"timestamp,attr"`
+	Testcases  []Testcase `xml:"testcase"`
+	Properties []Property `xml:"properties"`
+	Filename   string     `xml:"-"`
 }
 
 type TestSuiteGinkgo struct {
@@ -54,4 +55,9 @@ type Failure struct {
 type Error struct {
 	Message string `xml:"message,attr"`
 	Text    string `xml:",chardata"`
+}
+
+type Property struct {
+	Name  string `xml:"name"`
+	Value string `xml:"value"`
 }

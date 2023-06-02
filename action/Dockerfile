@@ -1,4 +1,4 @@
-FROM quay.io/aanm/junit2md:v0.0.1@sha256:9c8c560517059eade97aa8622e59b0c5e00ce81003585c8241f638666d78616a
+FROM quay.io/aanm/junit2md:v0.0.3@sha256:3b09954bd275971660be1a729590db6f7e2677de3cb983daf4942f1ba93c03aa
 
 COPY entrypoint.sh /entrypoint.sh
 

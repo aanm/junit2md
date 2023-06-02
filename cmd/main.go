@@ -171,6 +171,8 @@ func parseGolangFile(f *os.File, passed *bool, skipped *bool, failed *bool, erro
 		if suite.Name == "" {
 			continue
 		}
+		// Check if this was generated from golang unit tests.
+		golangGenerated := isFromGolangGenerator(suite)
 		testSuiteStatus := StatusPass
 		if len(suite.Testcases) == 0 {
 			testSuiteStatus = StatusSkipped
@@ -191,10 +193,24 @@ func parseGolangFile(f *os.File, passed *bool, skipped *bool, failed *bool, erro
 				failure = testcase.Error.Text
 				failureCaseName = testcase.Name
 			}
+			if !golangGenerated {
+				testCaseResults = addTestCase(testCaseResults, testcase.Name, testCaseStatus, failureCaseName, failure, testcase.Time, passed, skipped, failed, errored)
+			}
 		}
-		testCaseResults = addTestCase(testCaseResults, suite.Name, testSuiteStatus, failureCaseName, failure, suite.Time, passed, skipped, failed, errored)
+		if golangGenerated {
+			testCaseResults = addTestCase(testCaseResults, suite.Name, testSuiteStatus, failureCaseName, failure, suite.Time, passed, skipped, failed, errored)
+		}
 	}
 	return testCaseResults, nil
+}
+
+func isFromGolangGenerator(suite Testsuite) bool {
+	// So far the golang generators don't have any properties set in the xml.
+	// Hopefully this won't change.
+	if len(suite.Properties) == 0 {
+		return true
+	}
+	return false
 }
 
 func parseGinkgoFile(f *os.File, passed *bool, skipped *bool, failed *bool, errored *bool) ([]TestCaseResult, error) {
