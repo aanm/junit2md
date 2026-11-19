@@ -71,3 +71,27 @@ jobs:
         with:
           junit-directory: "example/successful"
 ```
+
+## Release
+
+`hack/release-checksums.sh` builds the release binaries with the Go
+version in `.go-version` and prints their sha256. The build does not
+depend on the host or the checkout path, so anyone can rebuild the
+published binaries byte for byte. Set `GO` to pick another `go` binary.
+A change to `cmd/` or `.go-version` changes the binaries and so needs a
+new release.
+
+1. Bump `JUNIT2MD_VERSION` in `action.yaml` and run
+   `hack/release-checksums.sh -w` to pin the new sha256 values.
+2. Merge the change.
+3. Tag the commit that landed on `main` and push the tag, for example
+   `git tag -a v0.0.4 -m v0.0.4 <commit>` and `git push origin v0.0.4`.
+   The release workflow builds the binaries, checks them against
+   `action.yaml`, publishes the release and runs the action against it.
+4. Wait for the release workflow to pass and for `gh release view v0.0.4`
+   to list both binaries and `SHA256SUMS`. If the release job fails, no
+   release exists: delete the tag, fix the problem and tag again. If only
+   the smoke test fails, delete the release and the tag as well.
+5. Consumers then pin the commit the tag points to,
+   `git rev-parse v0.0.4^{commit}`. Until the release exists, the action
+   at that commit fails with a 404.
