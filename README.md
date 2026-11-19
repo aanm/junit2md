@@ -50,15 +50,17 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   test-junit-2-md:
     runs-on: ubuntu-latest
     name: Print JUnits as GitHub Summary
     steps:
       - name: Checkout code
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: ${{ steps.vars.outputs.sha }}
           persist-credentials: false
 
       - name: Publish Test Results As GitHub Summary
@@ -71,9 +73,8 @@ jobs:
     name: Print JUnits Failures as GitHub Summary
     steps:
       - name: Checkout code
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: ${{ steps.vars.outputs.sha }}
           persist-credentials: false
 
       - name: Publish Test Results As GitHub Summary
