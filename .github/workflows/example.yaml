@@ -12,29 +12,81 @@ permissions:
 
 jobs:
   test-junit-2-md:
-    runs-on: ubuntu-latest
-    name: Print JUnits as GitHub Summary
+    name: Print JUnits as GitHub Summary (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-24.04
+          - ubuntu-24.04-arm
+          - ubuntu-26.04
+          - ubuntu-26.04-arm
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: .go-version
+          cache: false
+
+      - name: Build junit2md and check its sha256 against action.yaml
+        run: |
+          hack/release-checksums.sh -c -o "${RUNNER_TEMP}/dist"
+          install -D -m 0755 "${RUNNER_TEMP}/dist/junit2md-linux-$(go env GOARCH)" \
+            "${RUNNER_TEMP}/junit2md/junit2md"
 
       - name: Publish Test Results As GitHub Summary
         uses: ./
         with:
           junit-directory: "example/successful"
 
-  test-junit-2-md-failing-tests:
-    runs-on: ubuntu-latest
-    name: Print JUnits Failures as GitHub Summary
+      - name: Check the junit2md output
+        run: |
+          "${RUNNER_TEMP}/junit2md/junit2md" -i example/successful/junit.xml -s=false \
+            | cmp - example/successful/table.md
+
+      - name: Publish Test Failures As GitHub Summary
+        uses: ./
+        with:
+          junit-directory: "example/failure"
+
+  test-junit-2-md-corrupted-binary:
+    name: Refuse to run a corrupted junit2md binary
+    runs-on: ubuntu-26.04
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
+      - name: Place a corrupted junit2md binary
+        run: |
+          mkdir -p "${RUNNER_TEMP}/junit2md"
+          printf '#!/bin/sh\ntouch "%s"\n' "${RUNNER_TEMP}/corrupted-binary-ran" \
+            > "${RUNNER_TEMP}/corrupted"
+          install -m 0755 "${RUNNER_TEMP}/corrupted" "${RUNNER_TEMP}/junit2md/junit2md"
+
       - name: Publish Test Results As GitHub Summary
+        id: junit2md
+        continue-on-error: true
         uses: ./
         with:
-          junit-directory: "example/failure"
+          junit-directory: "example/successful-cilium-cli"
+
+      - name: Check that the action never ran the corrupted binary
+        env:
+          OUTCOME: ${{ steps.junit2md.outcome }}
+        run: |
+          if [ -e "${RUNNER_TEMP}/corrupted-binary-ran" ]; then
+            echo "::error::The action ran the corrupted binary"
+            exit 1
+          fi
+          if [ "${OUTCOME}" = success ] && cmp -s "${RUNNER_TEMP}/corrupted" "${RUNNER_TEMP}/junit2md/junit2md"; then
+            echo "::error::The action succeeded and kept the corrupted binary"
+            exit 1
+          fi

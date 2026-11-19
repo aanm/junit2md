@@ -4,6 +4,9 @@
 Markdown table.
 
 This repository can also be used as GitHub action.  
+The action downloads the `junit2md` binary for the runner architecture
+(x64 or arm64) from the GitHub release `JUNIT2MD_VERSION` in `action.yaml`
+and runs it only if its sha256 matches the one `action.yaml` pins.
 
 ## Usage
 
@@ -64,21 +67,7 @@ jobs:
           persist-credentials: false
 
       - name: Publish Test Results As GitHub Summary
-        uses: aanm/junit2md@v0.0.1
+        uses: aanm/junit2md@<commit of the v0.0.4 tag> # v0.0.4
         with:
-          junit-directory: "example"
-
-  test-junit-2-md-failing-tests:
-    runs-on: ubuntu-latest
-    name: Print JUnits Failures as GitHub Summary
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-
-      - name: Publish Test Results As GitHub Summary
-        uses: aanm/junit2md@v0.0.1
-        with:
-          junit-directory: "example"
+          junit-directory: "example/successful"
 ```
