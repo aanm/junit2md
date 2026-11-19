@@ -1,0 +1,82 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    name: Publish the junit2md release binaries
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: .go-version
+          cache: false
+
+      - name: Check the tag against action.yaml
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          version="$(sed -n 's/^ *JUNIT2MD_VERSION: *//p' action.yaml)"
+          if [ "${version}" != "${TAG}" ]; then
+            echo "::error::Tag ${TAG} differs from JUNIT2MD_VERSION ${version:-<missing>} in action.yaml"
+            exit 1
+          fi
+
+      - name: Build the release binaries
+        run: hack/release-checksums.sh -c -o dist
+
+      - name: Create the release
+        env:
+          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          gh release create "${TAG}" --verify-tag --title "${TAG}" \
+            dist/junit2md-linux-amd64 dist/junit2md-linux-arm64 dist/SHA256SUMS
+
+  smoke-test:
+    name: Run the released action (${{ matrix.os }})
+    needs: release
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-24.04
+          - ubuntu-24.04-arm
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Check that no junit2md binary is in place
+        run: |
+          if [ -e "${RUNNER_TEMP}/junit2md" ]; then
+            echo "::error::${RUNNER_TEMP}/junit2md exists before the action runs"
+            exit 1
+          fi
+
+      - name: Publish Test Results As GitHub Summary
+        uses: ./
+        with:
+          junit-directory: "example/successful"
+
+      - name: Check the junit2md output
+        run: |
+          "${RUNNER_TEMP}/junit2md/junit2md" -i example/successful/junit.xml -s=false \
+            | cmp - example/successful/table.md

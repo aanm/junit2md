@@ -4,6 +4,9 @@
 Markdown table.
 
 This repository can also be used as GitHub action.  
+The action downloads the `junit2md` binary for the runner architecture
+(x64 or arm64) from the GitHub release `JUNIT2MD_VERSION` in `action.yaml`
+and runs it only if its sha256 matches the one `action.yaml` pins.
 
 ## Usage
 
@@ -50,34 +53,45 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   test-junit-2-md:
     runs-on: ubuntu-latest
     name: Print JUnits as GitHub Summary
     steps:
       - name: Checkout code
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: ${{ steps.vars.outputs.sha }}
           persist-credentials: false
 
       - name: Publish Test Results As GitHub Summary
-        uses: aanm/junit2md@v0.0.1
+        uses: aanm/junit2md@<commit of the v0.0.4 tag> # v0.0.4
         with:
-          junit-directory: "example"
-
-  test-junit-2-md-failing-tests:
-    runs-on: ubuntu-latest
-    name: Print JUnits Failures as GitHub Summary
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
-        with:
-          ref: ${{ steps.vars.outputs.sha }}
-          persist-credentials: false
-
-      - name: Publish Test Results As GitHub Summary
-        uses: aanm/junit2md@v0.0.1
-        with:
-          junit-directory: "example"
+          junit-directory: "example/successful"
 ```
+
+## Release
+
+`hack/release-checksums.sh` builds the release binaries with the Go
+version in `.go-version` and prints their sha256. The build does not
+depend on the host or the checkout path, so anyone can rebuild the
+published binaries byte for byte. Set `GO` to pick another `go` binary.
+A change to `cmd/` or `.go-version` changes the binaries and so needs a
+new release.
+
+1. Bump `JUNIT2MD_VERSION` in `action.yaml` and run
+   `hack/release-checksums.sh -w` to pin the new sha256 values.
+2. Merge the change.
+3. Tag the commit that landed on `main` and push the tag, for example
+   `git tag -a v0.0.4 -m v0.0.4 <commit>` and `git push origin v0.0.4`.
+   The release workflow builds the binaries, checks them against
+   `action.yaml`, publishes the release and runs the action against it.
+4. Wait for the release workflow to pass and for `gh release view v0.0.4`
+   to list both binaries and `SHA256SUMS`. If the release job fails, no
+   release exists: delete the tag, fix the problem and tag again. If only
+   the smoke test fails, delete the release and the tag as well.
+5. Consumers then pin the commit the tag points to,
+   `git rev-parse v0.0.4^{commit}`. Until the release exists, the action
+   at that commit fails with a 404.
